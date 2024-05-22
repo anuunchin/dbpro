@@ -198,18 +198,21 @@ host_arch=$(uname -m)
 # Default manifest
 manifest=bootfs.manifest.skel
 fs_type=${vars[fs]-zfs}
-usrskel_arg=
+#usrskel_arg=
+usrskel_arg="--usrskel modules/tpch-data/tpch.manifest.skel"
 case $fs_type in
 zfs)
 	;; # Nothing to change here. This is our default behavior
 rofs|rofs_with_zfs|virtiofs)
 	# Both are read-only (in OSv) and require nothing extra on bootfs to work
 	manifest=bootfs_empty.manifest.skel
-	usrskel_arg="--usrskel usr_rofs.manifest.skel";;
+	#usrskel_arg="--usrskel usr_rofs.manifest.skel";;
+	usrskel_arg="--usrskel modules/tpch-data/tpch.manifest.skel";;
 ramfs)
 	cp "$SRC"/static/etc/fstab "$OUT"/fstab
 	manifest=$OUT/usr.manifest
-	usrskel_arg="--usrskel usr_ramfs.manifest.skel";;
+	#usrskel_arg="--usrskel usr_ramfs.manifest.skel";;
+	usrskel_arg="--usrskel modules/tpch-data/tpch.manifest.skel";;
 *)
 	echo "Unknown filesystem \"$fs_type\"" >&2
 	exit 2

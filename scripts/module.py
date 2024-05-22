@@ -173,7 +173,7 @@ def build(args):
         config = resolve.local_import(image_config_file)
         run_list = config.get('run', [])
         selected_modules = []
-    else:
+    else:        	
         # If images/image_config doesn't exist, assume image_config is a
         # comma-separated list of module names, and build an image from those
         # modules (and their dependencies). The command line to run is to
