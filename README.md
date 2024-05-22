@@ -7,12 +7,18 @@
     git submodule update --init --recursive
     ```
 
-2. To build the image:
+2. Add `-D_FORTIFY_SOURCE=0` flag to `/apps/sqlite/GET`.
+
+    ```
+    cc -O2 -fPIC -Wall -shared -DHAVE_MREMAP=0 -D_FORTIFY_SOURCE=0 -o libsqlite3.so.0 upstream/sqlite-amalgamation-$VERSION/*.c
+    ```
+
+3. To build the image:
     ```
     ./scripts/build image=sqlite
     ```
 
-3. To run the image:
+4. To run the image:
     ```
     ./scripts/run.py
     ```
