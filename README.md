@@ -13,11 +13,7 @@
     cc -O2 -fPIC -Wall -shared -DHAVE_MREMAP=0 -D_FORTIFY_SOURCE=0 -o libsqlite3.so.0 upstream/sqlite-amalgamation-$VERSION/*.c
     ```
 
-<<<<<<< HEAD
 3. To build the image:
-=======
-2. To build the image:
->>>>>>> 284adbe3 (Luccas data)
     ```
     ./scripts/build image=sqlite
     ```
